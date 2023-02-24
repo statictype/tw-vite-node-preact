@@ -10,7 +10,12 @@
   },
   "dependencies": {
     "preact": "^10.12.1",
+    "react-router-dom": "^6.8.1",
     "tailwind-merge": "^1.10.0"
+  },
+  "aliases": {
+    "react": "preact/compat",
+    "react-dom": "preact/compat"
   },
   "devDependencies": {
     "@babel/core": ">=7.12.10 <8.0.0",
