@@ -1,7 +1,9 @@
-import { Page } from "./templates/base";
+import { Page } from './templates/base';
 
 export function PageError() {
   return (
-    <Page><>Error page</></Page>
+    <Page>
+      <>Error page</>
+    </Page>
   );
 }

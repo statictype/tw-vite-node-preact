@@ -1,7 +1,9 @@
-import { Page } from "./templates/base";
+import { Page } from './templates/base';
 
 export function CreateMultisig() {
   return (
-    <Page><>Create multisig page</></Page>
+    <Page>
+      <>Create multisig page</>
+    </Page>
   );
 }
