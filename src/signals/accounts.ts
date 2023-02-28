@@ -1,20 +1,15 @@
 import { effect, signal } from '@preact/signals'
-import { WalletAccount } from '@talisman-connect/wallets'
-import { getAccounts } from '../util/accounts'
+import { getWalletBySource, WalletAccount } from '@talisman-connect/wallets'
 import { retrieveStored } from '../util/localStorage'
 
-export const accounts = signal<WalletAccount[]>([])
-accounts.value = await getAccounts()
+const accounts = signal<WalletAccount[]>([])
+await getAccounts()
 
 const storedAccount = retrieveStored('defaultAccount')
 const storedExtension = retrieveStored('defaultExtension')
 
-export const defaultAccount = signal(storedAccount)
-export const defaultExtension = signal(storedExtension)
-
-if (!storedAccount && accounts.value.length > 0) {
-  defaultAccount.value = accounts.value[0]
-}
+const defaultAccount = signal(storedAccount)
+const defaultExtension = signal(storedExtension)
 
 effect(
   () =>
@@ -24,3 +19,25 @@ effect(
       JSON.stringify(defaultAccount.value),
     ),
 )
+
+async function getAccounts() {
+  const wallet = getWalletBySource('polkadot-js')
+  if (wallet) {
+    try {
+      await wallet.enable('Capi Multisig App')
+      // TODO unsubscribe unknown
+      const unsubscribe = await wallet.subscribeAccounts((a) => {
+        accounts.value = a ?? []
+        if (!storedAccount && accounts.value.length > 0) {
+          defaultAccount.value = accounts.value[0]
+        }
+      })
+    } catch (err) {
+      console.error(err)
+    }
+  } else {
+    console.error('Polkadot.js extension is not installed')
+  }
+}
+
+export { accounts, defaultAccount, defaultExtension }
