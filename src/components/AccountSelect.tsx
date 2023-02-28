@@ -1,4 +1,5 @@
 import { Listbox, Transition } from '@headlessui/react'
+import { WalletAccount } from '@talisman-connect/wallets'
 import { Fragment } from 'preact/jsx-runtime'
 import { accounts, defaultAccount } from '../signals'
 import { ChevronUpDownIcon } from './icons'
@@ -12,7 +13,7 @@ export default function AccountSelect() {
   return (
     <div className="w-72 mr-4">
       <Listbox
-        value={defaultAccount.value}
+        value={defaultAccount.value ?? (placeholder as WalletAccount)}
         onChange={(a) => {
           defaultAccount.value = a
         }}
