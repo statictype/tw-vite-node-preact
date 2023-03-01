@@ -1,5 +1,5 @@
 import { Page } from './templates/base'
-import { CenteredCard } from '../components/centered-card'
+import { CenteredCard } from '../components/CenteredCard'
 import { Link } from 'react-router-dom'
 
 export function Dashboard() {

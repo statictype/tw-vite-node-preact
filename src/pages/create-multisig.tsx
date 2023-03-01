@@ -1,6 +1,6 @@
 import { Page } from './templates/base'
 import { defaultAccount } from '../signals/accounts'
-import { CenteredCard } from '../components/centered-card'
+import { CenteredCard } from '../components/CenteredCard'
 
 export function CreateMultisig() {
   return (
