@@ -1,25 +1,16 @@
-import clsx from 'clsx'
 import { Page } from './templates/base'
-import { accounts, defaultAccount } from '../signals/accounts'
 import { CenteredCard } from '../components/centered-card'
+import { Link } from 'react-router-dom'
 
 export function Dashboard() {
   return (
     <Page>
       <CenteredCard>
-        <h1>Dashboard page</h1>
-        <ul>
-          {accounts.value.map((a) => (
-            <li
-              key={`${a.address}-${a.source}`}
-              className={clsx(
-                a.address === defaultAccount.value?.address && 'text-green-500',
-              )}
-            >
-              {a.name}
-            </li>
-          ))}
-        </ul>
+        <Link to="/create-multisig">
+          <button className="py-3 px-6 bg-slate-800 text-white">
+            New multisig
+          </button>
+        </Link>
       </CenteredCard>
     </Page>
   )

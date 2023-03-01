@@ -8,9 +8,10 @@ type Props = {
 
 function Sidebar() {
   return (
-    <div className="basis-1/4 xl:basis-1/5">
-      <div className="w-36 ml-5 mt-5">
+    <div className="basis-1/4 xl:basis-1/5 bg-white">
+      <div className="w-32 ml-5 mt-5">
         <img src={polkadotLogo} alt="Polkadot logo" />
+        <span className="text-xs uppercase ml-8 relative -top-1">WESTEND</span>
       </div>
     </div>
   )
@@ -20,7 +21,7 @@ export function Page({ children }: Props) {
   return (
     <div className="min-h-full flex w-full">
       <Sidebar />
-      <div className="bg-gray-200 w-full">
+      <div className="bg-gray-100 w-full">
         <TopBar />
         {children}
       </div>
