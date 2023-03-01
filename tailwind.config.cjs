@@ -8,4 +8,4 @@ module.exports = {
     require('@tailwindcss/line-clamp'),
     require('prettier-plugin-tailwindcss'),
   ],
-};
+}
