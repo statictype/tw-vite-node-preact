@@ -4,10 +4,8 @@ import { retrieveStored } from '../util/localStorage'
 
 const accounts = signal<WalletAccount[]>([])
 await getAccounts()
-
 const storedAccount = retrieveStored('defaultAccount')
 const storedExtension = retrieveStored('defaultExtension')
-
 const defaultAccount = signal(storedAccount)
 const defaultExtension = signal(storedExtension)
 
